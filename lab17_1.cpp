@@ -20,12 +20,10 @@ int main(){
 	cout << "Input Array B: ";
 	for(int i=0; i < nB; i++) cin >> B[i];
 	
-	C = new int;
-	for(int i=0; i < nA; i++) C[i] = new int;
-	
+	C = new int[nA*nB];
 	for(int i=0; i < nA; i++){
 		for(int j=0; j < nB; j++) {
-			C = A[i]*B[j];
+			C[i*nB+j] = A[i]*B[j];
 		}
 	}
 	
@@ -39,11 +37,13 @@ int main(){
 	for(int i=0; i < nA; i++){
 		cout << setw(5) << A[i] << " ";
 		for(int j=0; j < nB; j++) {
-			cout << setw(5) << C[i][j] << " ";
+			cout << setw(5) << C[i*nB+j] << " ";
 		}
 		cout << "\n";
 	}
-     delete A,B,C; 
+    delete [] A;
+	delete [] B;
+	delete [] C;
 
 	return 0;
 }
